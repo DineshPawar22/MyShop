@@ -43,7 +43,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\Product.cs" />
-    <Compile Include="ProductRepository.cs" />
+    <Compile Include="Models\ProductCategory.cs" />
+    <Compile Include="ProductCategoryRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
