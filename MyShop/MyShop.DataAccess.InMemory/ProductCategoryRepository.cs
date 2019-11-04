@@ -9,7 +9,7 @@ using System.Runtime.Caching;
 
 namespace MyShop.DataAccess.InMemory
 {
-    class ProductCategoryRepository
+    public class ProductCategoryRepository
     {
 
         ObjectCache cache = MemoryCache.Default;

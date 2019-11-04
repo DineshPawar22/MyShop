@@ -12,8 +12,8 @@ namespace MyShop.Core.Models
     {
         public string Id { get; set; }
         [StringLength(20)]
-        [DisplayName("Product Category Name")]
-        public string Name { get; set; }
+        [DisplayName("Catageory")]
+        public string Catageory { get; set; }
    
 
         public ProductCategory()

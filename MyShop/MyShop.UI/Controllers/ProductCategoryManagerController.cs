@@ -75,7 +75,7 @@ namespace MyShop.UI.Controllers
                     return View(productCategory);
                 }
 
-                productCategoryToEdit.Name = productCategory.Name;
+                productCategoryToEdit.Catageory = productCategory.Catageory;
 
                 context.Commit();
 
