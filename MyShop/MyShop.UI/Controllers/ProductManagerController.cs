@@ -12,20 +12,20 @@ namespace MyShop.UI.Controllers
 {
     public class ProductManagerController : Controller
     {
-        ProductRepository context;
-        ProductCategoryRepository productCategories;
+        InMemoryRepository<Product> context;
+        InMemoryRepository<ProductCategory> productCategories;
+        
 
         public ProductManagerController()
         {
-            context = new ProductRepository();
-            productCategories = new ProductCategoryRepository();
+            context = new InMemoryRepository<Product>();
+            productCategories = new InMemoryRepository<ProductCategory>();
         }
         // GET: ProductManager
         public ActionResult Index()
         {
             List<Product> products = context.Collection().ToList();
             return View(products);
-            return View();
         }
         public ActionResult Create()
         {
@@ -56,7 +56,7 @@ namespace MyShop.UI.Controllers
         
         public ActionResult Edit(string Id)
         {
-            Product product = context.find(Id);
+            Product product = context.Find(Id);
             if(product == null)
             {
                 return HttpNotFound();
@@ -75,7 +75,7 @@ namespace MyShop.UI.Controllers
         [HttpPost]
         public ActionResult Edit(Product product, string Id)
         {
-            Product productToEdit = context.find(Id);
+            Product productToEdit = context.Find(Id);
             if (productToEdit == null)
             {
                 return HttpNotFound();
@@ -103,7 +103,7 @@ namespace MyShop.UI.Controllers
 
         public ActionResult Delete(string Id)
         {
-            Product product = context.find(Id);
+            Product product = context.Find(Id);
             if (product == null)
             {
                 return HttpNotFound();
@@ -118,14 +118,14 @@ namespace MyShop.UI.Controllers
         [ActionName("Delete")]
         public ActionResult conformDelete(string Id)
         {
-            Product product = context.find(Id);
+            Product product = context.Find(Id);
             if (product == null)
             {
                 return HttpNotFound();
             }
             else
             {
-                context.DeleteProduct(product);
+                context.Delete(Id);
                 context.Commit();
 
                 return RedirectToAction("Index");
